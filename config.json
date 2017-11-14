@@ -1,5 +1,5 @@
 {
     "default_language_file" : "lang/lang_ES.json",
-    "window-size" : "800x600",
-    "group" : "1"
+    "window-halt" : "800",
+    "window-width" : "600"
 }
