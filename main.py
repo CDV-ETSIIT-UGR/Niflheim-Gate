@@ -7,11 +7,9 @@ import json
 import urllib
 import time
 
-#from clases.MCRcon import MCRcon
+from clases.Player import Player
 
 if __name__ == '__main__':
-    """ Manage main menu. """
-    #mcrcon1 = MCRcon()
 
     """ load configuration """
     if os.path.isfile(os.path.join('config.json')):
@@ -39,3 +37,5 @@ if __name__ == '__main__':
     else:
         print("The file '"+game_config['default_language_file']+"' can not be find.")
         exit(4)
+
+    p1 = Player(game_config)
