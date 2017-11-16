@@ -1,5 +1,6 @@
 {
     "default_language_file" : "lang/lang_ES.json",
-    "window-halt" : "800",
+	"max-time-to-move" : "60",
+    "window-height" : "600",
     "window-width" : "600"
 }

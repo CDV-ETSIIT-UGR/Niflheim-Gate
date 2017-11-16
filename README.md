@@ -27,7 +27,8 @@ __pip install -r requirements.txt__
 
 ## Community ##
 - [x] [Alejandro Gómez](https://github.com/alejandrogm90) @alejandrogm90
-
+- [x] [Algebro](https://github.com/AlgebroHeavyGuns) @AlgebroHeavyGuns
+- [x] [David Representa](https://github.com/David-Representa) @David-Representa
 *This program also uses code from a number of open source projects. Effort has been made to clearly identify authors in the code comments. If you notice and missing or incorrect attribution please let us know.*
 
 

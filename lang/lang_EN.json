@@ -1,5 +1,6 @@
 {
-    "star" : "Start",
+    "lang" : "English",
+	"start" : "Start",
     "exit" : "Exit",
     "game-over" : "Game over",
     "new-game" : "New game",

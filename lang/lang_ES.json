@@ -1,5 +1,6 @@
 {
-    "star" : "Empezar",
+    "lang" : "Español",
+	"start" : "Empezar",
     "exit" : "Salir",
     "game-over" : "Fin de juego",
     "new-game" : "Juego nuevo",
