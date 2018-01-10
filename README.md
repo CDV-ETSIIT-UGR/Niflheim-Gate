@@ -20,7 +20,7 @@ You may also run into an issue with installing package requirements:
 __pip install -r requirements.txt__
 
 
-## Bibliografy ##
+## Bibliography ##
 - The creator of Python [Official Website](https://www.python.org)
 - The creator of pygame [Official Website](https://www.pygame.org)
 
