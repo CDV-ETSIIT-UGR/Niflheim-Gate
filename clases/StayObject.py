@@ -56,8 +56,8 @@ class StayObject(pygame.sprite.Sprite):
 		pygame.init()
 		pygame.display.set_caption("Niflheim-Gate")
 		#self.clock = pygame.time.Clock()
-		self.screen = pygame.display.set_mode((int(self.game_config["window-width"]), int(self.game_config["window-height"])))
-		self.background_image = StayObject.load_image("media/image/menu.png")
+		screen = pygame.display.set_mode((int(self.game_config["window-width"]), int(self.game_config["window-height"])))
+		background_image = StayObject.load_image("media/image/menu.png")
 
 		arrow1 = Arrow(int(self.game_config['window-width']))
 		while True:
@@ -72,13 +72,13 @@ class StayObject(pygame.sprite.Sprite):
 			t2 = StayObject.fText(self.game_config['lang']['exit'], int(self.game_config['window-width'])/2, 300)
 			t3 = StayObject.fText("Niflheim-Gate", int(self.game_config['window-width'])/2, 100)
 
-			self.screen.blit(arrow1.image, arrow1.rect)
-			self.screen.blit(t1[0], t1[1])
-			self.screen.blit(t2[0], t2[1])
-			self.screen.blit(t3[0], t3[1])
+			screen.blit(arrow1.image, arrow1.rect)
+			screen.blit(t1[0], t1[1])
+			screen.blit(t2[0], t2[1])
+			screen.blit(t3[0], t3[1])
 			pygame.display.flip()
 			if arrowReturn == 1:
-				break;
+				break
 
 class Arrow():
 	"""Class to control the arrow."""
@@ -94,14 +94,18 @@ class Arrow():
 		salida = 0
 		if self.rect.centery != 200:
 			if keys[K_UP]:
+				print("Arriba")
 				self.rect.centery = 200
 		if self.rect.centery != 300:
 			if keys[K_DOWN]:
+				print("Abajo")
 				self.rect.centery = 300
 		if self.rect.centery == 300:
 			if keys[K_RETURN]:
+				print("OP - 1")
 				raise SystemExit
 		if self.rect.centery == 200:
 			if keys[K_RETURN]:
+				print("OP - 2")
 				salida = 1
 		return salida

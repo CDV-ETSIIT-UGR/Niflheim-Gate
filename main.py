@@ -64,6 +64,5 @@ if __name__ == '__main__':
 	#pygame.display.set_caption("Niflheim-Gate")
 	game1 = StayObject(game_config)
 
-	game1.menu()
-	#while True:
-	#	game1.menu()
+	while True:
+		game1.menu()

@@ -11,7 +11,7 @@ In order to run this script the following needs to be installed:
  - python3 or higher: __https://www.python.org/downloads/__
 
 ### Linux ###
- - python3 or higher: __sudo apt-get install python python-dev__
+ - python3 or higher: __sudo apt-get install python3 python3-dev__
  - pip: __sudo apt-get install python3-pip__
 
 ### Both ###
@@ -29,6 +29,7 @@ __pip install -r requirements.txt__
 - [x] [Alejandro Gómez](https://github.com/alejandrogm90) @alejandrogm90
 - [x] [Algebro](https://github.com/AlgebroHeavyGuns) @AlgebroHeavyGuns
 - [x] [David Representa](https://github.com/David-Representa) @David-Representa
+- [x] [Manuel Herrera](https://github.com/Herrjea) @Herrjea 
 
 *This program also uses code from a number of open source projects. Effort has been made to clearly identify authors in the code comments. If you notice and missing or incorrect attribution please let us know.*
 
