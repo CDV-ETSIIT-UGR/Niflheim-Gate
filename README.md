@@ -27,7 +27,7 @@ __pip install -r requirements.txt__
 
 ## Community ##
 - [x] [Alejandro Gómez](https://github.com/alejandrogm90) @alejandrogm90
-- [x] [Algebro](https://github.com/AlgebroHeavyGuns) @AlgebroHeavyGuns
+- [x] [Ismael Marín](https://github.com/lordisma) @lordisma
 - [x] [David Representa](https://github.com/David-Representa) @David-Representa
 - [x] [Manuel Herrera](https://github.com/Herrjea) @Herrjea 
 
