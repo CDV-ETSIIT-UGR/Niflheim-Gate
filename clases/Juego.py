@@ -23,9 +23,14 @@ import sys
 import pygame
 from pygame.locals import *
 
-class StayObject(pygame.sprite.Sprite):
+class Juego(pygame.sprite.Sprite):
 	def __init__(self, game_config):
-		self.game_config = game_config
+		self.lang = game_config["lang"]
+		self.max_time_to_move = int(game_config["max-time-to-move"])
+		self.window_height = int(game_config["window-height"])
+		self.window_width = int(game_config["window-width"])
+		self.frames_per_second = int(game_config['frames-per-second'])
+		self.half_width = self.window_width / 2
 
 	@staticmethod
 	def load_image(filename, transparent=False):
@@ -55,56 +60,56 @@ class StayObject(pygame.sprite.Sprite):
 		"""Manage main menu."""
 		pygame.init()
 		pygame.display.set_caption("Niflheim-Gate")
-		#self.clock = pygame.time.Clock()
-		screen = pygame.display.set_mode((int(self.game_config["window-width"]), int(self.game_config["window-height"])))
-		background_image = StayObject.load_image("media/image/menu.png")
+		self.clock = pygame.time.Clock()
+		print(str(self.window_width) + " --- " + str(self.window_height))
+		screen = pygame.display.set_mode((self.window_width, self.window_height))
+		background_image = Juego.load_image("media/image/menu.png")
 
-		arrow1 = Arrow(int(self.game_config['window-width']))
+		arrow1 = Arrow(self.window_width)
 		while True:
-			#time = self.clock.tick(60)
 			keys = pygame.key.get_pressed()
 			for eventos in pygame.event.get():
 				if eventos.type == QUIT:
 					sys.exit(0)
 
+			screen.fill((0,0,0))
 			arrowReturn = arrow1.arrowMove(keys)
-			t1 = StayObject.fText(self.game_config['lang']['start'], int(self.game_config['window-width'])/2, 200)
-			t2 = StayObject.fText(self.game_config['lang']['exit'], int(self.game_config['window-width'])/2, 300)
-			t3 = StayObject.fText("Niflheim-Gate", int(self.game_config['window-width'])/2, 100)
+			t1 = Juego.fText(self.lang['start'], self.half_width, 300)
+			t2 = Juego.fText(self.lang['exit'], self.half_width, 400)
+			t3 = Juego.fText("Niflheim-Gate", self.half_width, 200)
 
 			screen.blit(arrow1.image, arrow1.rect)
 			screen.blit(t1[0], t1[1])
 			screen.blit(t2[0], t2[1])
 			screen.blit(t3[0], t3[1])
 			pygame.display.flip()
-			if arrowReturn == 1:
-				break
+			time = self.clock.tick(self.frames_per_second)
 
 class Arrow():
 	"""Class to control the arrow."""
 
 	def __init__(self, window_width):
-		self.image = StayObject.load_image("media/image/arrow.png")
+		self.image = Juego.load_image("media/image/arrow.png")
 		self.rect = self.image.get_rect()
 		self.rect.centerx = window_width / 3
-		self.rect.centery = 200
+		self.rect.centery = 300
 
 	def arrowMove(self, keys):
 		"""Manage Player."""
 		salida = 0
-		if self.rect.centery != 200:
+		if self.rect.centery != 300:
 			if keys[K_UP]:
 				print("Arriba")
-				self.rect.centery = 200
-		if self.rect.centery != 300:
+				self.rect.centery = 300
+		if self.rect.centery != 400:
 			if keys[K_DOWN]:
 				print("Abajo")
-				self.rect.centery = 300
-		if self.rect.centery == 300:
+				self.rect.centery = 400
+		if self.rect.centery == 400:
 			if keys[K_RETURN]:
 				print("OP - 1")
 				raise SystemExit
-		if self.rect.centery == 200:
+		if self.rect.centery == 300:
 			if keys[K_RETURN]:
 				print("OP - 2")
 				salida = 1

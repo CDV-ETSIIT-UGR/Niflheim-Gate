@@ -27,7 +27,7 @@ import time
 #from pygame.locals import *
 
 from clases.Player import Player
-from clases.StayObject import StayObject
+from clases.Juego import Juego
 
 if __name__ == '__main__':
 
@@ -62,7 +62,7 @@ if __name__ == '__main__':
 	# Star game
 	#pygame.init()
 	#pygame.display.set_caption("Niflheim-Gate")
-	game1 = StayObject(game_config)
+	game1 = Juego(game_config)
 
 	while True:
 		game1.menu()
