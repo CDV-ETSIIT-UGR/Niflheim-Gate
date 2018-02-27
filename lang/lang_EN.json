@@ -1,6 +1,7 @@
 {
     "lang" : "English",
 	"start" : "Start",
+    "configuration" : "Configuration",
     "exit" : "Exit",
     "game-over" : "Game over",
     "new-game" : "New game",

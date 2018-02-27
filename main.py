@@ -23,8 +23,6 @@ import os
 import json
 import urllib
 import time
-#import pygame
-#from pygame.locals import *
 
 from clases.Player import Player
 from clases.Juego import Juego

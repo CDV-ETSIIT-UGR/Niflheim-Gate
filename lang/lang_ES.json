@@ -1,6 +1,7 @@
 {
     "lang" : "Español",
 	"start" : "Empezar",
+    "configuration" : "Configuración",
     "exit" : "Salir",
     "game-over" : "Fin de juego",
     "new-game" : "Juego nuevo",
@@ -17,7 +18,7 @@
     "error_11" : "",
     "error_12" : "",
     "string_01" : "Fichero de lenguaje cargado correctamente.",
-    "string_02" : "",
+    "string_02" : "Fichero de perfil cargado correctamente.",
     "string_03" : "",
     "string_04" : "",
     "string_05" : "",
