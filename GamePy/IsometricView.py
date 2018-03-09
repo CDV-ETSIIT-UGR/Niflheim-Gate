@@ -20,11 +20,65 @@ class Background(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left,self.rect.top = location
 
+class Tile(pygame.sprite.Sprite):
+    def __init__(self, image_type, location):
+        self.image_type = image_type
+        self.location = location
+        pass
 
-def PlaceTile(gameDisplay,Terrain, x, y):
+    def PlaceTile(self, gameDisplay):
+        cartx = self.location[0] * config.tileWidth / 2
+        carty = self.location[1] * config.tileHeight / 2
 
-    gameDisplay.blit(Terrain,(x,y))
-    #pygame.draw.rect(gameDisplay, Ttype, [x,y,config.tileWidth,config.tileHeight])
+        cor_X = [cartx, cartx + config.tileWidth]
+        cor_Y = [carty, carty + config.tileHeight]
+
+        point_x = ((self.location[0] + 1) * config.tileWidth / 2 )
+        point_y = (self.location[1] * config.tileHeight / 2)
+
+        x = config.offset_x + ((cartx - carty))
+        y = config.offset_y + ((cartx + carty) / 2)
+
+        px = config.offset_x + ((point_x - point_y))
+        py = config.offset_y + ((point_x + point_y) / 2)
+
+
+        if self.image_type == 1:
+            Terrain =  pygame.image.load('./PNG/Isometric-Blocks_03.png').convert()
+            Terrain.set_colorkey((0,0,0))
+        if self.image_type == 0:
+            Terrain =  pygame.image.load('./PNG/Isometric-Blocks_24.png').convert()
+            Terrain.set_colorkey((0,0,0))
+            PlaceTile (gameDisplay, Terrain, x, y)
+            y = y - config.tileHeight/2
+            Terrain =  pygame.image.load('./PNG/Isometric-Blocks_03.png').convert()
+            Terrain.set_colorkey((0,0,0))
+        if self.image_type == 2:
+            y = y + 5
+            Terrain =  pygame.image.load('./PNG/isometric-PACK-2_07.png').convert()
+            Terrain.set_colorkey((0,0,0))
+
+        rect = Terrain.get_rect()
+
+        print(rect[0], rect.y)
+
+        gameDisplay.blit(Terrain, (x, y))
+        pygame.draw.circle(gameDisplay, config.blue, [int(x), int(y)], int(config.tileWidth /16))
+        pygame.draw.circle(gameDisplay, config.red, [int(px), int(py)], int(config.tileWidth /8))
+        pass
+
+    def __str__(self):
+        cartx = self.location[0] * config.tileWidth / 2
+        carty = self.location[1] * config.tileHeight / 2
+        y = config.offset_y + ((cartx + carty) / 2)
+        x = config.offset_x + ((cartx - carty))
+        print(str(cartx) + "  " + str(carty))
+        print(str(x) + " " + str(y))
+        pass
+
+
+
+
     """
 
     This function must do a tranformation 2d to isometric view
@@ -34,7 +88,7 @@ def PlaceTile(gameDisplay,Terrain, x, y):
     use for this the function pygame.draw.polygon(screen, color ,[vertex],width)
 
     """
-
+"""
 def MapBuilder(gameDisplay):
     random.seed()
 
@@ -75,10 +129,7 @@ def MapBuilder(gameDisplay):
 
         currentTile = 0
         currentRow += 1
-
-def click(posX, posY):
-
-    pass
+"""
 
 def main():
     pygame.init()
@@ -90,31 +141,14 @@ def main():
     DISPLAYSURF.fill([255,255,255])
     DISPLAYSURF.blit(BackGround.image, BackGround.rect)
 
-    Tree =  pygame.image.load('./Medieval/oaktree.png').convert()
-    Tree.set_colorkey((0,0,0))
-    cartx = 0  * config.tileWidth / 2
-    carty = (len(config.map_data) - 3)  * config.tileHeight / 2
-    tx = 460 + ((cartx - carty) )
-    ty = 100 + ((cartx + carty) / 2 )
-
-    cartx = 3  * config.tileWidth / 2
-    carty = 1  * config.tileHeight / 2
-    cx = 550 + ((cartx - carty) )
-    cy = 100 + ((cartx + carty) / 2 )
-
-    print(config.map_data[1][3])
-
-    print(cx , cy)
-
-    House =  pygame.image.load('./Medieval/house.png').convert()
-    #House.set_colorkey((0,0,0))
-    cartx = 3  * config.tileWidth / 2
-    carty = 5  * config.tileHeight / 2
-    hx = 360 + ((cartx - carty) )
-    hy = 100 + ((cartx + carty) / 2 )
-
-    MapBuilder(DISPLAYSURF)
-
+    tile1 = Tile(1,(0,0))
+    tile2 = Tile(2,(1,0))
+    tile3 = Tile(1,(0,1))
+    """
+    la y decrece es decir cuanto menos y mas bajo
+    la x crece en la direccion sureste
+    """
+    #MapBuilder(DISPLAYSURF)
 
     while True:
         for event in pygame.event.get():
@@ -125,14 +159,15 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
-        pygame.draw.circle(DISPLAYSURF, config.black, [cx.__int__(), cy.__int__()], 2)
         pygame.display.flip()
         DISPLAYSURF.fill([255,255,255])
         DISPLAYSURF.blit(BackGround.image, BackGround.rect)
-        MapBuilder(DISPLAYSURF)
+        tile1.PlaceTile(DISPLAYSURF)
+        tile2.PlaceTile(DISPLAYSURF)
+        tile3.PlaceTile(DISPLAYSURF)
+        #MapBuilder(DISPLAYSURF)
         #DISPLAYSURF.blit(Tree,(tx,ty))
         #DISPLAYSURF.blit(House,(hx,hy))
-        pygame.draw.circle(DISPLAYSURF, config.black, [cx.__int__(), cy.__int__()], 2)
         clock.tick(config.FPS)
 
 

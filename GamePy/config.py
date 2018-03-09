@@ -22,3 +22,6 @@ blue = (10,10,255)
 green = (10,255,10)
 
 FPS = 20
+
+offset_x = 550
+offset_y = 100
